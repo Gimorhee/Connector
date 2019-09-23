@@ -23,7 +23,7 @@ router.get('/', auth, async (req, res) => {
 });
 
 // @route   POST api/auth
-// @desc    Aytgebtucate user & get token 
+// @desc    Authenticate user & get token 
 // @access  Public
 router.post('/', [
     // Validate user inputs
@@ -39,7 +39,7 @@ router.post('/', [
         const { email, password } = req.body;
 
         try {
-            // Check if your email already exists through email
+            // Check the email is is correct
             let user = await User.findOne({ email });
             if (!user) {
                 return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });   
