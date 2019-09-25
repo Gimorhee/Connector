@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://admin-danny:ehd810041@cluster0-duikt.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "jwt-token-secret"
+    "jwtSecret": "jwt-token-secret",
+    "githubId": "d386cab6f3bd33a54192",
+    "githubSecret": "ffe96db351e2c03991631843583430ee90949166"
 }
