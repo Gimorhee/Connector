@@ -6,7 +6,8 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
-  LOGIN_FAIL
+  LOGIN_FAIL,
+  LOGOUT
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
@@ -23,7 +24,6 @@ export const loadUser = () => async dispatch => {
       type: USER_LOADED,
       payload: res.data
     });
-
   } catch (err) {
     dispatch({
       type: AUTH_ERROR
@@ -56,12 +56,11 @@ export const register = ({ name, email, password }) => async dispatch => {
     });
 
     dispatch(loadUser());
-
   } catch (err) {
     const errors = err.response.data.errors;
 
     if (errors) {
-       errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
     }
 
     dispatch({
@@ -71,7 +70,7 @@ export const register = ({ name, email, password }) => async dispatch => {
 };
 
 // Login User
-export const login = ( email, password ) => async dispatch => {
+export const login = (email, password) => async dispatch => {
   const config = {
     headers: {
       "Content-Type": "application/json"
@@ -94,12 +93,11 @@ export const login = ( email, password ) => async dispatch => {
     });
 
     dispatch(loadUser());
-
   } catch (err) {
     const errors = err.response.data.errors;
 
     if (errors) {
-       errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
     }
 
     dispatch({
@@ -108,3 +106,8 @@ export const login = ( email, password ) => async dispatch => {
   }
 };
 
+export const logout = () => async dispatch => {
+  dispatch({
+    type: LOGOUT
+  });
+};
