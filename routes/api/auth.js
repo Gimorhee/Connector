@@ -9,8 +9,8 @@ const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 
 // @route   GET api/auth 
-// @desc    Test route 
-// @access  Public
+// @desc    Get authenticated user data 
+// @access  PRIVATE
 router.get('/', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
