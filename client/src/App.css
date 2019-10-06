@@ -298,6 +298,10 @@ button {
   background: var(--light-color);
 }
 
+.table {
+  border: 2px solid var(--primary-color);
+}
+
 /* Navbar */
 .navbar {
   display: flex;
