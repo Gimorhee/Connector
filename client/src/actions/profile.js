@@ -36,6 +36,7 @@ export const createProfile = (formData, history, edit = false) =>  async dispatc
 
     dispatch(setAlert( edit? "Updated Profile" : "Created Profile", "success"));
 
+    // Redirecting when creating
     if(!edit) {
       history.push('/dashboard');
     }
