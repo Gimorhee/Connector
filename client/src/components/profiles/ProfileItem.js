@@ -20,14 +20,16 @@ const ProfileItem = ({
           {status} {company && <span> at {company}</span>}
         </p>
         <p className="my-1">{location && <span>{location}</span>}</p>
-        <Link to={`/profile/${_id}`} className="btn btn-primary">Check Profile</Link>
+        <Link to={`/profile/${_id}`} className="btn btn-primary">
+          Check Profile
+        </Link>
       </div>
       <ul>
-          {skills.slice(0,4).map((skill, index) => (
-              <li className="text-primary" key={index}>
-                  <i className="fas fa-check"></i> {skill}
-              </li>
-          ))}
+        {skills.slice(0, 4).map((skill, index) => (
+          <li className="text-primary" key={index}>
+            <i className="fas fa-check"></i> {skill}
+          </li>
+        ))}
       </ul>
     </div>
   );
