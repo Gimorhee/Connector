@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { spawn } from "child_process";
 
 const ProfileTop = ({
   profile: {
