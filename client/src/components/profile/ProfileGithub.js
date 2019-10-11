@@ -7,7 +7,7 @@ import Spinner from "../layout/Spinner";
 const ProfileGithub = ({ username, getGithubRepos, repos }) => {
   useEffect(() => {
     getGithubRepos(username);
-  }, [getGithubRepos]);
+  }, [getGithubRepos, username]);
 
   return (
     <div className="profile-github">
@@ -37,9 +37,7 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
                 <li className="badge badge-dark">
                   Watchers: {repo.watchers_count}
                 </li>
-                <li className="badge badge-light">
-                  Forks: {repo.forks_count}
-                </li>
+                <li className="badge badge-light">Forks: {repo.forks_count}</li>
               </ul>
             </div>
           </div>
