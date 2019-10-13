@@ -88,7 +88,9 @@ export const createProfile = (
 ) => async dispatch => {
   try {
     const config = {
-      "Content-Type": "application/json"
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
 
     const res = await axios.post("/api/profile", formData, config);
@@ -122,9 +124,10 @@ export const createProfile = (
 export const addExperience = (formData, history) => async dispatch => {
   try {
     const config = {
-      "Content-Type": "application/json"
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
-
     const res = await axios.put("/api/profile/experience", formData, config);
 
     dispatch({
@@ -153,7 +156,9 @@ export const addExperience = (formData, history) => async dispatch => {
 export const addEducation = (formData, history) => async dispatch => {
   try {
     const config = {
-      "Content-Type": "application/json"
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
 
     const res = await axios.put("/api/profile/education", formData, config);
