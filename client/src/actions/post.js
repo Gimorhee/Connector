@@ -7,7 +7,9 @@ import {
   UPDATE_LIKES,
   DELETE_POST,
   ADD_POST,
-  GET_POST
+  GET_POST,
+  ADD_COMMENT,
+  REMOVE_COMMENT
 } from "./types";
 
 export const getPosts = () => async dispatch => {
@@ -126,3 +128,47 @@ export const getPost = postId => async dispatch => {
     });
   }
 };
+
+// Add Comment
+export const addComment = (postId, formData) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const res = await axios.post(`/api/posts/comments/${postId}`, formData, config);
+
+    dispatch({
+      type: ADD_COMMENT,
+      payload: res.data
+    })
+
+    dispatch(setAlert("Comment Added", "success"))
+    
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+}
+
+// Remove Comment
+export const removeComment = (postId, commentId) => async dispatch => {
+  try {
+    await axios.delete(`/api/posts/comments/${postId}/${commentId}`);
+
+    dispatch({
+      type: REMOVE_COMMENT,
+      payload: commentId
+    })
+    
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+}
