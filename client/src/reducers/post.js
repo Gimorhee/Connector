@@ -6,7 +6,7 @@ import {
   ADD_POST,
   GET_POST,
   ADD_COMMENT,
-  REMOVE_COMMENT
+  DELETE_COMMENT
 } from "../actions/types";
 
 const initialState = {
@@ -67,7 +67,7 @@ export default function(state = initialState, action) {
         },
         loading: false
       };
-    case REMOVE_COMMENT:
+    case DELETE_COMMENT:
       return {
         ...state,
         post: {

@@ -9,13 +9,12 @@ import {
   ADD_POST,
   GET_POST,
   ADD_COMMENT,
-  REMOVE_COMMENT
+  DELETE_COMMENT
 } from "./types";
 
 export const getPosts = () => async dispatch => {
   try {
     const res = await axios.get("/api/posts");
-
     dispatch({
       type: GET_POSTS,
       payload: res.data
@@ -155,13 +154,13 @@ export const addComment = (postId, formData) => async dispatch => {
   }
 }
 
-// Remove Comment
-export const removeComment = (postId, commentId) => async dispatch => {
+// Delete Comment
+export const deleteComment = (postId, commentId) => async dispatch => {
   try {
     await axios.delete(`/api/posts/comments/${postId}/${commentId}`);
 
     dispatch({
-      type: REMOVE_COMMENT,
+      type: DELETE_COMMENT,
       payload: commentId
     })
     
